@@ -1,0 +1,12 @@
+{
+  "name": "securechat_backend",
+  "version": "1.0.0",
+  "description": "backend of thesecurechat.me",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "author": "Guillaume Denece",
+  "license": "ISC"
+}
