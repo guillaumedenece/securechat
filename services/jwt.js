@@ -17,6 +17,18 @@ const create = (username) => {
   });
 };
 
+const verify = (token) => {
+  const secretKey = configGeneral.token_secret_key;
+
+  return new Promise( (resolve, reject) => {
+    jwt.verify(token, secretKey, (error, decoded) => {
+      if(error) return reject(error);
+      return resolve(decoded);
+    });
+  })
+};
+
 module.exports = {
-  create
+  create,
+  verify
 }
