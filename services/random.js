@@ -1,8 +1,10 @@
 'use strict'
 
-const getRandomBits = (nbBits) => {
-  const max = Math.pow(2, nbBits);
-  return Math.trunc(Math.random() * (max-1));
+const crypto = require('crypto');
+
+const getRandomBits = (nbBytes) => {
+  const buf = crypto.randomBytes(nbBytes).toString('hex');
+  return buf;
 }
 
 module.exports = {

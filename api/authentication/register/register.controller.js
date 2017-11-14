@@ -16,7 +16,7 @@ const registerRequestOne = (bodyRequest) => {
     username = ?', [username])
     .then( (res) => {
       if(res.length === 0) {
-        salt = random.getRandomBits(32);
+        salt = random.getRandomBytes(32);
         return MySQLService.query('INSERT INTO users \
         (username, salt) \
         VALUES (?, ?)', [username, salt]);

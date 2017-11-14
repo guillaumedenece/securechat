@@ -5,10 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "crypto": "^1.0.1",
     "express": "^4.16.2",
     "http": "0.0.0",
     "jsonwebtoken": "^8.1.0",
-    "lodash": "^4.17.4",
     "mysql": "^2.15.0",
     "sjcl": "^1.0.7"
   },

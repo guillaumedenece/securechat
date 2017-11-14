@@ -1,7 +1,6 @@
 'use strict';
 
 const sjcl = require('sjcl');
-const _ = require('lodash');
 
 const jwt = require('../../../services/jwt');
 const random = require('../../../services/random');
@@ -23,7 +22,7 @@ const loginRequestOne = (bodyRequest) => {
     .then( (res) => {
       if(res.length === 1 && res[0].salt) {
         salt = res[0].salt;
-        challenge = random.getRandomBits(32);
+        challenge = random.getRandomBytes(32);
         var challenge_expiration = Date.now() + configGeneral.challenge_validity_time;
         challenge_expiration = new Date(challenge_expiration);
 
@@ -62,11 +61,12 @@ const loginRequestTwo = (bodyRequest) => {
 
       const toMAC = res[0].hash_password + res[0].challenge;
       const tag_bis = sjcl.hash.sha256.hash(toMAC);
+      const tag_bis_hex = sjcl.codec.hex.fromBits(tag_bis);
+      console.log('tag_bis: ' + tag_bis_hex);
 
-      if (_.isEqual(hash_password_challenge,tag_bis))
+      if (hash_password_challenge === tag_bis_hex)
       tag_verify = true;
 
-      return Promise.resolve();
       return MySQLService.query('UPDATE users \
       SET challenge = NULL, challenge_expiration = NULL \
       WHERE username = ?', [username]);
