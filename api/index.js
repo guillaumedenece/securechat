@@ -5,7 +5,7 @@ module.exports = (app) => {
   app.use('/authentication',
           require('./authentication'));
 
-  // app.use('/messages',
-          // require('./messages'));
+  app.use('/messages',
+          require('./messages'));
 
 };
