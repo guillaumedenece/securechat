@@ -62,7 +62,6 @@ const loginRequestTwo = (bodyRequest) => {
       const toMAC = res[0].hash_password + res[0].challenge;
       const tag_bis = sjcl.hash.sha256.hash(toMAC);
       const tag_bis_hex = sjcl.codec.hex.fromBits(tag_bis);
-      console.log('tag_bis: ' + tag_bis_hex);
 
       if (hash_password_challenge === tag_bis_hex)
       tag_verify = true;
