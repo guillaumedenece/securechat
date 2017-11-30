@@ -11,8 +11,8 @@ require('./api')(app);
 
 const server = require('http').createServer(app);
 
-server.listen(expressConfig.port, expressConfig.ip, () => {
-  console.log('Server listening at: ' + expressConfig.ip + ':' + expressConfig.port);
+server.listen(expressConfig.port, () => {
+  console.log('Server listening on port: ' + expressConfig.port);
 });
 
 process.on('SIGINT', function() {
