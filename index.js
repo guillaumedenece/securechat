@@ -14,8 +14,8 @@ var sever = null;
 
 if (expressConfig.useSSL) {
   var credentials = {
-      key: fs.readFileSync(config.ssl.privateKey),
-      cert: fs.readFileSync(config.ssl.certificate)
+      key: fs.readFileSync(expressConfig.ssl.privateKey),
+      cert: fs.readFileSync(expressConfig.ssl.certificate)
   };
   server = require('https').createServer(credentials, app);
 } else {
