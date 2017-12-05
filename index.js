@@ -9,7 +9,17 @@ MysqlService.connect();
 app.use(bodyParser.json());
 require('./api')(app);
 
-const server = require('http').createServer(app);
+var sever = null;
+
+if (expressConfig.useSSL) {
+  var credentials = {
+      key: fs.readFileSync(config.ssl.privateKey),
+      cert: fs.readFileSync(config.ssl.certificate)
+  };
+  server = require('https').createServer(credentials, app);
+} else {
+  server = require('http').createServer(app);
+}
 
 server.listen(expressConfig.port, () => {
   console.log('Server listening on port: ' + expressConfig.port);
