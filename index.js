@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const expressConfig = require('./config/express');
 const MysqlService = require('./services/MySQLService');
