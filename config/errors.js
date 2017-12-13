@@ -1,8 +1,3 @@
-//
-// Created by Ronan GUIHO on 4/22/16.
-// Copyright (c) 2016 Swapcard. All rights reserved.
-//
-
 'use strict';
 
 exports[400] = function (res, message) {
