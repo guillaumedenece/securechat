@@ -14,7 +14,7 @@ const sendMessage = (bodyRequest, from_user_id) => {
     MySQLService.query('INSERT INTO messages \
     (content, to_user_id, from_user_id) \
     VALUES (?, ?, ?)', [message, to_user_id, from_user_id])
-    .then( () => resolve({'success': 'message sent'}) )
+    .then( () => resolve({'success': true}) )
     .catch( (error) => reject(error) )
   });
 

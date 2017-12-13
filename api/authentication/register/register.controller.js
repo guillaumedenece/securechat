@@ -49,7 +49,7 @@ const registerRequestTwo = (bodyRequest) => {
       SET hash_password = ? \
       WHERE username = ?', [hash_password, username]);
     })
-    .then( () => resolve({'register': 'success'}))
+    .then( () => resolve({'success': true}))
     .catch( (error) => reject(error) );
   })
 };
